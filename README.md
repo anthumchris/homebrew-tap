@@ -1,16 +1,18 @@
-# Anthumchris Gnupg
+# homebrew-tap
+
+My [Homebrew](https://brew.sh/) tap for installing various formulae that are not officially provided by Homebrew
 
 ## How do I install these formulae?
 
-`brew install anthumchris/gnupg/<formula>`
+`brew install anthumchris/tap/gnupg@2.5`
 
-Or `brew tap anthumchris/gnupg` and then `brew install <formula>`.
+Or `brew tap anthumchris/tap` and then `brew install gnupg@2.5`.
 
 Or, in a `brew bundle` `Brewfile`:
 
 ```ruby
-tap "anthumchris/gnupg"
-brew "<formula>"
+tap "anthumchris/tap"
+brew "gnupg@2.5"
 ```
 
 ## Documentation

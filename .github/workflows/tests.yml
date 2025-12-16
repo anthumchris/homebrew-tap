@@ -18,6 +18,18 @@ jobs:
       contents: read
       pull-requests: read
     steps:
+      - name: Uninstall Ubuntu gnupg packages
+        # This step prevents test failures for Homebrew gnupg@2.5 by removing system's gnupg packages
+        # Homebrew tests run non-privileged and are unable to kill system's root gnupg processes
+        if: startsWith(matrix.os, 'ubuntu')
+        run: |
+          sudo apt-get remove -y "gpgconf" || true;
+          gpgconf 2>/dev/null && {
+            dpkg-query -l "gpg*" "gnupg*"
+            echo "Error: System's pre-installed gpg still exists" >&2
+            exit 1
+          } || true
+
       - name: Set up Homebrew
         id: set-up-homebrew
         uses: Homebrew/actions/setup-homebrew@main
