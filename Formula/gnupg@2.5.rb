@@ -24,6 +24,7 @@ class GnupgAT25 < Formula
         "--disable-silent-rules",
         "--enable-all-tests",
         "--sysconfdir=#{etc}",
+        "--with-agent-pgm=#{bin}/gpg-agent",
         "--with-pinentry-pgm=#{Formula["pinentry"].opt_bin}/pinentry",
         "--with-readline=#{Formula["readline"].opt_prefix}",
         *std_configure_args
@@ -37,8 +38,8 @@ class GnupgAT25 < Formula
   def post_install
     (var/"run").mkpath
 
-    # restart daemons after upgrades
-    quiet_system "gpgconf", "--kill", "all"
+    # stop daemons for every installed gpg version to ensure this version runs
+    quiet_system "which gpgconf | xargs -I {} sh -c '{} --kill all'"
   end
 
   test do
@@ -56,6 +57,13 @@ class GnupgAT25 < Formula
       %commit
     GPG
 
+    # avoid collisions with other installed gpg-agents
+    #   gpg: WARNING: server 'gpg-agent' is older than us (2.2.x < 2.5.x)
+    agent = "--agent-program", "#{bin}/gpg-agent"
+
+    system "gpg", "--version"
+    puts ENV["PATH"]
+
     begin
       # pinentry is executable, which provides key passphrase entry:
       #   gpg --quick-generate-key --batch --pinentry ask pinentry@test
@@ -66,15 +74,17 @@ class GnupgAT25 < Formula
       system "test", "-f", "#{Formula["readline"].opt_lib}/libreadline.#{libreadline_ext}"
 
       # keys are created
-      system bin/"gpg", "--batch", "--gen-key", "batch.gpg"
+      system bin/"gpg", *agent, "--batch", "--gen-key", "batch.gpg"
 
       # file is encrypted and signed
       file = "test.txt"
       (testpath/file).write "test content"
-      system bin/"gpg", "--encrypt", "--sign", "--recipient", "test@test", file
+      system bin/"gpg", *agent, "--encrypt", "--sign", "--recipient", "test@test", file
+
+      # system "#{bin}/gpgconf --list-dirs | sort"
 
       # file is decrypted
-      system bin/"gpg", "--decrypt", "#{file}.gpg"
+      system bin/"gpg", *agent, "--decrypt", "#{file}.gpg"
     ensure
       system bin/"gpgconf", "--kill", "all"
     end
