@@ -18,6 +18,17 @@ jobs:
       contents: read
       pull-requests: read
     steps:
+      # This avoids conflicts and test failures with Homebrew gnupg Formulae
+      - name: Uninstall Ubuntu gnupg package
+        if: startsWith(matrix.os, 'ubuntu')
+        run: |
+          sudo apt-get remove -y "gpgconf" || true;
+          gpgconf 2>/dev/null && {
+            dpkg-query -l "gpg*" "gnupg*"
+            echo "Error: System's pre-installed gpg still exists" >&2
+            exit 1
+          } || true
+
       - name: Set up Homebrew
         id: set-up-homebrew
         uses: Homebrew/actions/setup-homebrew@main

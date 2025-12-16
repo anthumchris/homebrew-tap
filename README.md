@@ -1,16 +1,16 @@
-# Anthumchris Gnupg
+# GNU Privacy Guard (OpenPGP)
 
 ## How do I install these formulae?
 
-`brew install anthumchris/gnupg/<formula>`
+`brew install anthumchris/gnupg/gnupg@2.5`
 
-Or `brew tap anthumchris/gnupg` and then `brew install <formula>`.
+Or `brew tap anthumchris/gnupg` and then `brew install gnupg@2.5`.
 
 Or, in a `brew bundle` `Brewfile`:
 
 ```ruby
 tap "anthumchris/gnupg"
-brew "<formula>"
+brew "gnupg@2.5"
 ```
 
 ## Documentation
