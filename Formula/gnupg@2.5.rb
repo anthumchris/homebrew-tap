@@ -37,8 +37,8 @@ class GnupgAT25 < Formula
   def post_install
     (var/"run").mkpath
 
-    # stop existing gpg daemons to ensure this new version runs
-    quiet_system "gpgconf --kill all'"
+    # stop pre-existing gpg daemons to ensure this new version runs
+    quiet_system bin/"gpgconf", "--kill", "all"
   end
 
   test do

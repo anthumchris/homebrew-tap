@@ -10,8 +10,7 @@ jobs:
   test-bot:
     strategy:
       matrix:
-        # os: [ ubuntu-22.04, macos-15-intel, macos-26 ]
-        os: [ ubuntu-22.04 ]
+        os: [ ubuntu-22.04, macos-15-intel, macos-26 ]
     runs-on: ${{ matrix.os }}
     permissions:
       actions: read
@@ -19,19 +18,16 @@ jobs:
       contents: read
       pull-requests: read
     steps:
+      # This avoids conflicts and test failures with Homebrew gnupg Formulae
       - name: Uninstall Ubuntu gnupg package
-        # This avoids conflicts and test failures with Homebrew gnupg Formulae
         if: startsWith(matrix.os, 'ubuntu')
         run: |
           sudo apt-get remove -y "gpgconf" || true;
           gpgconf 2>/dev/null && {
-            echo "Error: System's pre-installed gpg still exists" >&2
             dpkg-query -l "gpg*" "gnupg*"
+            echo "Error: System's pre-installed gpg still exists" >&2
             exit 1
           } || true
-
-        # sudo apt-get remove -y "gnupg*" || true;
-        # sudo apt-get remove -y "gpg*" || true;
 
       - name: Set up Homebrew
         id: set-up-homebrew
@@ -50,7 +46,7 @@ jobs:
 
       - run: brew test-bot --only-setup
 
-      # - run: brew test-bot --only-tap-syntax
+      - run: brew test-bot --only-tap-syntax
       - run: brew test-bot --only-formulae
         if: github.event_name == 'pull_request'
 
