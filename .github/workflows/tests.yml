@@ -19,10 +19,11 @@ jobs:
       contents: read
       pull-requests: read
     steps:
-      - name: Uninstall Ubuntu gnupg package
-        # This avoids conflicts and test failures with Homebrew gnupg Formulae
-        if: startsWith(matrix.os, 'ubuntu')
-        run: sudo apt remove -y "gnupg*"
+      # - name: Uninstall Ubuntu gnupg package
+      #   # This avoids conflicts and test failures with Homebrew gnupg Formulae
+      #   if: startsWith(matrix.os, 'ubuntu')
+      #   run: sudo apt remove -y "gnupg*"
+#
       - name: Set up Homebrew
         id: set-up-homebrew
         uses: Homebrew/actions/setup-homebrew@main
