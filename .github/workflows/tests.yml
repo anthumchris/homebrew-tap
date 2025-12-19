@@ -18,8 +18,9 @@ jobs:
       contents: read
       pull-requests: read
     steps:
-      # This avoids conflicts and test failures with Homebrew gnupg Formulae
-      - name: Uninstall Ubuntu gnupg package
+      - name: Uninstall Ubuntu gnupg packages
+        # This step prevents test failures for Homebrew gnupg@2.5 by removing system's gnupg packages
+        # Homebrew tests run non-privileged and are unable to kill system's root gnupg processes
         if: startsWith(matrix.os, 'ubuntu')
         run: |
           sudo apt-get remove -y "gpgconf" || true;

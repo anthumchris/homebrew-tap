@@ -2,14 +2,14 @@
 
 ## How do I install these formulae?
 
-`brew install anthumchris/gnupg/gnupg@2.5`
+`brew install anthumchris/tap/gnupg@2.5`
 
-Or `brew tap anthumchris/gnupg` and then `brew install gnupg@2.5`.
+Or `brew tap anthumchris/tap` and then `brew install gnupg@2.5`.
 
 Or, in a `brew bundle` `Brewfile`:
 
 ```ruby
-tap "anthumchris/gnupg"
+tap "anthumchris/tap"
 brew "gnupg@2.5"
 ```
 
