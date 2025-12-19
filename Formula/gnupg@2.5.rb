@@ -5,6 +5,9 @@ class GnupgAT25 < Formula
   sha256 "25a622e625a1cc9078b5e3f7adf2bd02b86759170e2fbb8542bca8e907214610"
   license "GPL-3.0-or-later"
 
+  # update udring testing to create diff to force build
+  #   nonce = 2
+
   bottle do
     root_url "https://github.com/anthumchris/homebrew-tap/releases/download/gnupg@2.5-2.5.14"
     sha256 arm64_tahoe:  "1e12169aa3ffde3eb9681b3e89c02ab9e39f233f0e4b2c08ec78a692c016bb2e"

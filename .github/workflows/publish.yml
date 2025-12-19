@@ -1,6 +1,3 @@
-# update to force diff to invoke github action for 'pr-pull'
-#   nonce = 1
-
 name: brew pr-pull
 
 on:
