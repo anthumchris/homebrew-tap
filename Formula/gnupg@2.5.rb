@@ -30,6 +30,10 @@ class GnupgAT25 < Formula
   depends_on "pinentry"               # ensures key passphrase entry
   depends_on "readline"               # enables: Readline support
 
+  on_macos do
+    depends_on "gettext"
+  end
+
   def install
     mkdir "build" do
       system "../configure",
