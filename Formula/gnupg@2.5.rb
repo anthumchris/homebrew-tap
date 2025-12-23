@@ -34,6 +34,12 @@ class GnupgAT25 < Formula
     depends_on "gettext"
   end
 
+  on_linux do
+    depends_on "bzip2"
+    depends_on "sqlite"
+    depends_on "zlib"
+  end
+
   def install
     mkdir "build" do
       system "../configure",
