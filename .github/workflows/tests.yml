@@ -57,16 +57,16 @@ jobs:
 
       - run: brew test-bot --only-setup
 
-      - run: brew test-bot --only-tap-syntax
-      - run: brew test-bot --only-formulae
+      - run: brew test-bot            --only-tap-syntax
+      - run: brew test-bot --verbose  --only-formulae
         if: github.event_name == 'pull_request'
 
       - name: Build macOS x86_64 bottle
         # Bottle otherwise doesn't build because of "unbottled dependencies" error above
         if: startsWith(matrix.os, 'macos-15-intel')
         run: |
-          brew install --build-bottle anthumchris/tap/gnupg@2.5
-          brew bottle anthumchris/tap/gnupg@2.5
+          brew install --verbose --build-bottle anthumchris/tap/gnupg@2.5
+          brew bottle  --verbose                anthumchris/tap/gnupg@2.5
 
       - name: Upload bottles as artifact
         if: always() && github.event_name == 'pull_request'
