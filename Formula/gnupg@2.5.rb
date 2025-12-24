@@ -10,10 +10,11 @@ class GnupgAT25 < Formula
 
   bottle do
     root_url "https://github.com/anthumchris/homebrew-tap/releases/download/gnupg@2.5-2.5.14"
-    sha256 arm64_tahoe:  "bfdeeac0d104c9014a55cfca8fb3723796383646ec0e62f0fd3615a83f533756"
-    sha256 arm64_sonoma: "11d42b248c3d88142fe8b6fed4a5b3f19c1b8d16ddeae87ade7e5aaadeaaa6b5"
-    sha256 arm64_linux:  "733f6eba61bce376caddcf8fa46576c033c10fb5193a2e705ca6fb7db2a2f223"
-    sha256 x86_64_linux: "ec9d643c08799663dad1d02e41530c7ac8688acbec63479d7dafad86f5f7a02d"
+    rebuild 6
+    sha256 arm64_tahoe:  "f0f2f43884ec04035fa23d7e69f083944ccab409b20ce5d462f9b6b3ba39e56b"
+    sha256 arm64_sonoma: "83b32cd9d28299f12361aa32236d172d65c0bee7f31f615226bae06c3f0c2670"
+    sha256 arm64_linux:  "1f809f36cdd752b948de39f3b98fdf16694379267bdc028f350c40dc0f4e0661"
+    sha256 x86_64_linux: "f7b290dc086a958a95a137d7f00a1f9fd66e20178565f4e51fbbdac32c54160e"
   end
 
   keg_only :versioned_formula
