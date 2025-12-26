@@ -6,7 +6,7 @@ class GnupgAT25 < Formula
   license "GPL-3.0-or-later"
 
   # update udring testing to create diff to force build
-  #   nonce = 3
+  #   nonce = 4
 
   bottle do
     root_url "https://github.com/anthumchris/homebrew-tap/releases/download/gnupg@2.5-2.5.14"
