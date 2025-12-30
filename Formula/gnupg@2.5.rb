@@ -9,12 +9,11 @@ class GnupgAT25 < Formula
   #   nonce = 4
 
   bottle do
-    root_url "https://github.com/anthumchris/homebrew-tap/releases/download/gnupg@2.5-2.5.14"
-    rebuild 7
-    sha256 arm64_tahoe:  "a213a661fe622721650e5f002145e0aa574d48811afc3c52eabe780e823508e0"
-    sha256 arm64_sonoma: "4511b7a0b2dc4bfccf6925e30ad1713cccc9e771e14f192e4efd07820a86fb60"
-    sha256 arm64_linux:  "b79602422c58af2e219a933e6c46f7e3e6d5fcedae60ce88d1a87cbde2784e0c"
-    sha256 x86_64_linux: "1fdcf88c6c107d7025dbac96bde85c6171478a261f556b7d85fc9d4545170f80"
+    root_url "https://github.com/anthumchris/homebrew-tap/releases/download/gnupg@2.5-2.5.16"
+    sha256 arm64_tahoe:  "be2da4ea7bea6124a9f700cea1872e17817ffcad89212cceba62dce134df39b9"
+    sha256 arm64_sonoma: "1ec3511fd8a5c824a0abe9026fcea2e6f32ff27c1aedf55643126358a63496a5"
+    sha256 arm64_linux:  "017acf6334203f8b71b1b2be94f0c2cf64ddda8e8abd7e1a8fe04844abb07575"
+    sha256 x86_64_linux: "9044ae92cd96498032f4470e84c8b36d5f99fe5529c1569c80854e951dc5a00b"
   end
 
   keg_only :versioned_formula
