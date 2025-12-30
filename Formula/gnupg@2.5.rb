@@ -1,11 +1,11 @@
 class GnupgAT25 < Formula
   desc "GNU Privacy Guard (OpenPGP) - production-ready pre 2.6-stable release"
-  homepage "https://lists.gnupg.org/pipermail/gnupg-announce/2025q4/000499.html"
-  url "https://gnupg.org/ftp/gcrypt/gnupg/gnupg-2.5.14.tar.bz2"
-  sha256 "25a622e625a1cc9078b5e3f7adf2bd02b86759170e2fbb8542bca8e907214610"
+  homepage "https://lists.gnupg.org/pipermail/gnupg-announce/2025q4/000500.html"
+  url "https://gnupg.org/ftp/gcrypt/gnupg/gnupg-2.5.16.tar.bz2"
+  sha256 "05144040fedb828ced2a6bafa2c4a0479ee4cceacf3b6d68ccc75b175ac13b7e"
   license "GPL-3.0-or-later"
 
-  # update udring testing to create diff to force build
+  # update during testing to force bottle/binary builds from this diff
   #   nonce = 4
 
   bottle do
